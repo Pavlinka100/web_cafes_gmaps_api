@@ -1,0 +1,104 @@
+{% block content %} {% include "header.html" %}
+<!--Don't forget your import here-->
+{% from "bootstrap5/form.html" import render_form %}
+<!-- Page Header -->
+<!--<header-->
+<!--  class="masthead"-->
+<!--  style="background-image: url('../static/assets/img/edit-bg.jpg')"-->
+<!--&gt;-->
+<!--  <div class="container position-relative px-4 px-lg-5">-->
+<!--    <div class="row gx-4 gx-lg-5 justify-content-center">-->
+<!--      <div class="col-md-10 col-lg-8 col-xl-7">-->
+<!--        <div class="page-heading">-->
+<!--          <h1>{{ h1 }}</h1>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</header>-->
+
+
+<!--<main class="mb-4">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-lg-8 col-md-10 mx-auto">-->
+<!--          {% with messages = get_flashed_messages() %}-->
+<!--        {% if messages %}-->
+<!--          {% for message in messages %}-->
+<!--           <p>{{ message }}</p>-->
+<!--          {% endfor %}-->
+<!--        {% endif %}-->
+<!--      {% endwith %}-->
+
+<!--        {% if form %}-->
+<!--            {{ render_form(form) }}-->
+<!--        {% endif %}-->
+<!--<div class="google-map" >-->
+<!--          {% if map %}-->
+<!--                {{map.html}}-->
+<!--        {{map.html}}{{map.js}}-->
+<!--        {% endif %}-->
+
+<!--    </div>-->
+
+
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--  </div>-->
+<!--</main>-->
+
+
+  <section class="page-section clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <div class="cta-inner bg-faded text-center ">
+
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                              {% for message in messages %}
+                               <p>{{ message }}</p>
+                              {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+
+                        </div>
+                       <div class="cta-inner left-0 text-left  mt-0 text-faded"  >
+                      <h1 class="site-heading text-center text-faded d-none d-lg-block m-0 ">
+                <span class="site-heading-upper text-primary ">{{h1}}</span>
+
+            </h1>
+
+
+
+                        <div class="cta-inner left-0 text-left  mt-0 text-faded" >
+
+
+                            {% if form %}
+
+            {{ render_form(form) }}
+
+        {% endif %}
+
+                             </div>
+
+
+                        <div class="cta-inner"  >
+                            <div class="google-map "  >
+                                {% if map %}
+                                {{map.html}}
+                                {{map.js}}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+{% include "footer.html" %} {% endblock %}

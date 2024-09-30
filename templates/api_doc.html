@@ -1,0 +1,151 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>API DOCs</h1>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header
+<article>
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+
+
+
+
+    <h2>GET method to retrieve information about one chosen cafe based on cafe_id</h2>
+          <ul>
+            <li>endpoint: /api/cafe/<cafe_id> </li>
+            <li>output example: <br />
+            {
+          "can_take_calls": true,
+          "coffee_price": "6",
+          "has_sockets": true,
+          "has_toilet": true,
+          "has_wifi": false,
+          "id": 1,
+          "img_url": "https://atlondonbridge.com/wp-content/uploads/2019/02/Pano_9758_9761-Edit-190918_LTS_Science_Gallery-Medium-Crop-V2.jpg",
+          "lat": 51.4698426,
+          "lng": -0.0661831,
+          "location": "London Bridge",
+          "map_url": "https://g.page/scigallerylon?share",
+          "name": "Science Gallery London",
+          "seats": "50+"
+        }
+                </li>
+        </ul>
+    <h2>GET method to retrieve all cafes in database</h2>
+    <ul>
+    <li>endpoint: /api/all </li>
+    <li>output example:  </li>
+    [{
+  "can_take_calls": true,
+  "coffee_price": "6",
+  "has_sockets": true,
+  "has_toilet": true,
+  "has_wifi": false,
+  "id": 1,
+  "img_url": "https://atlondonbridge.com/wp-content/uploads/2019/02/Pano_9758_9761-Edit-190918_LTS_Science_Gallery-Medium-Crop-V2.jpg",
+  "lat": 51.4698426,
+  "lng": -0.0661831,
+  "location": "London Bridge",
+  "map_url": "https://g.page/scigallerylon?share",
+  "name": "Science Gallery London",
+  "seats": "50+"
+}, {...}]
+</ul>
+
+
+    <h2>GET method to search cafes based on their location</h2>
+          <ul>
+    <li>endpoint: /api/search?loc=SearchedLocation </li>
+    <li>output example if anything found:  </li>
+    [
+  {
+    "can_take_calls": true,
+    "coffee_price": null,
+    "has_sockets": true,
+    "has_toilet": false,
+    "has_wifi": true,
+    "id": 22,
+    "img_url": "https://www.pexels.com/photo/grayscale-photograph-of-a-tiger-on-the-grass-6796574/",
+    "lat": 51.4698426,
+    "lng": -0.0661831,
+    "location": "London",
+    "map_url": "https://www.google.com/maps/place/London",
+    "name": "nevim",
+    "seats": "6"
+  },
+  {...}
+]
+
+<li>output example if nothing found:  <br />
+    {"error": {"Not Found":"Sorry, we do not have anything in your location"}}</li>
+</ul>
+
+   <h2>POST method to add a new cafe </h2>
+          <ul>
+    <li>endpoint: /api/add </li>
+    <li>params:  </li>
+    <ul>
+
+    <li>"can_take_calls": bool,</li>
+    <li>"coffee_price": string,</li>
+    <li>"has_sockets": bool,</li>
+    <li>"has_toilet": bool,</li>
+    <li>"has_wifi": bool,</li>
+    <li>"img_url": "https://www.validURL.com/",</li>
+    <li>"location": "SomePlace",</li>
+    <li>"map_url": "https://www.validMapURL.com",</li>
+    <li>"name": "CafeName",</li>
+    <li>"seats": "numberOfSeats"</li>
+    <li>"lat": float in range (-90, 90)</li>
+    <li>"lng": float in range (-180, 180)"</li>
+    </ul>
+</ul>
+<ul>
+    <li>example:  </li>
+   curl --location --request POST 'http://127.0.0.1:5000/api/add?name=nevim&map_url=https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2FLondon&img_url=https%3A%2F%2Fwww.pexels.com%2Fphoto%2Fgrayscale-photograph-of-a-tiger-on-the-grass-6796574%2F&location=London&seats=6&has_toiet=True&has_sockets=True&can_take_calls=True&coffe_price=good&has_wifi=True&lat=51&lon=0' \
+  <li>output if cafe is not added  <br />
+    {error={"Bad Request": "Some or all fields were incorrect or missing."})</li>
+<li>output if cafe successfully added<br />
+    {"success": f"Successfully added the new cafe."}</li>
+</ul>
+
+<h2>PATCH method to change cafe parameter named coffee price </h2>
+              <ul>
+    <li>endpoint: /api-update-price/<cafe_id> </li>
+    <li>example: <br />
+    curl --location --request PATCH 'http://127.0.0.1:5000/api-update-price/4?coffee_price=30'</li>
+
+<li>output if cafe not found   <br />
+    {"error": {"Not found": "Sorry, a cafe with that id is not in the database."}} </li>
+<li>output if cafe successfully updated <br />
+    {"success": "Successfully update the price."}</li>
+</ul>
+
+<h2>DELETE method to remove a cafe </h2>
+          <ul>
+    <li>endpoint: /api/delete/<cafe_id> </li>
+    <li>example:  <br />
+    curl --location --request DELETE 'http://127.0.0.1:5000/delete/23?api_key=YourKey'</li>
+    <li>output if cafe not found  <br />
+    {"error": {"Not found": "Sorry, a cafe with that id is not in the database."}} </li>
+    <li>output if cafe successfully deleted</li>
+    "success": "Successfully deleted."}
+              </ul>
+      </div>
+    </div>
+  </div>
+</article>
+{% include "footer.html" %}

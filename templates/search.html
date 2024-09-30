@@ -1,0 +1,48 @@
+{% block content %} {% include "header.html" %}
+<!--Don't forget your import here-->
+{% from "bootstrap5/form.html" import render_form %}
+
+  <section class="page-section clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <div class="cta-inner bg-faded text-center ">
+
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                              {% for message in messages %}
+                               <p>{{ message }}</p>
+                              {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+
+                        </div>
+                       <div class="cta-inner left-0 text-left  mt-0 text-faded"  >
+                      <h1 class="site-heading text-center text-faded d-none d-lg-block m-0 ">
+                <span class="site-heading-upper text-primary ">{{h1}}</span>
+
+            </h1>
+
+
+
+                        <div class="cta-inner left-0 text-left  mt-0 mb-2 text-faded"  >
+
+                            {{ render_form(form) }}
+                        </div>
+
+
+                        <div class="cta-inner"  >
+                            <div class="google-map "  >
+                                {{map.html}}
+                                {{map.js}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+{% include "footer.html" %} {% endblock %}
